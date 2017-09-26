@@ -9,7 +9,7 @@ email=contact@day-journal.com
 
 about=Easy to assign an attribute on QGIS
 
-tracker=https://github.com/dayjournal/AttributeAssignment
+tracker=https://github.com/dayjournal/AttributeAssignment/issues
 repository=https://github.com/dayjournal/AttributeAssignment
 
 tags=Attribute,vector
