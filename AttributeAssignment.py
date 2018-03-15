@@ -5,22 +5,25 @@
                                  A QGIS plugin
  Easy to assign an attribute on QGIS
                               -------------------
-        begin                : 2017-09-18
+        begin                : 2018-03-14
         git sha              : $Format:%H$
-        copyright            : (C) 2017 by Yasunori Kirimoto
+        copyright            : (C) 2018 by Yasunori Kirimoto
         email                : contact@day-journal.com
         license              : GNU General Public License v2.0
  ***************************************************************************/
 """
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 from qgis.core import *
 from qgis.gui import *
-import resources
-from AttributeAssignment_dialog import AttributeAssignmentDialog
-import os.path
+
+from .resources import *
+from .AttributeAssignment_dialog import AttributeAssignmentDialog
+
 import os
+import os.path
 import sys
 import codecs
 
@@ -108,19 +111,10 @@ class QgsMapToolClick(QgsMapTool):
         self.canvas = canvas
         self.dlg = dlg
     def canvasPressEvent(self, mouseEvent):
-        dPos = mouseEvent.pos()
-        mPos = self.toMapCoordinates(dPos)
-        lon = mPos.x()
-        lat = mPos.y()
-        width = self.iface.mapCanvas().mapUnitsPerPixel()*5
-        rect = QgsRectangle(mPos.x() - width,
-                            mPos.y() - width,
-                            mPos.x() + width,
-                            mPos.y() + width)
         layer = self.dlg.mMapLayerComboBox.currentText()
         fieldname = self.dlg.mFieldComboBox.currentText()
         textvalue = self.dlg.lineEdit_text.text()
-        layers = QgsMapLayerRegistry.instance().mapLayers()
+        layers = QgsProject.instance().mapLayers()
         for k,v in layers.items():
            if v.name() == layer:
                layer = v
@@ -129,6 +123,16 @@ class QgsMapToolClick(QgsMapTool):
         if not layer or layer.type() != QgsMapLayer.VectorLayer:
             QMessageBox.warning(None, u"Error", u"This is not a vector layer.")
             return
+        mPosBefore = mouseEvent.mapPoint()
+        layerCRS = layer.crs()
+        destcrs = self.iface.mapCanvas().mapSettings().destinationCrs()
+        Tf = QgsCoordinateTransform(destcrs, layerCRS, QgsProject.instance())
+        mPos = Tf.transform(mPosBefore)
+        width = 0.00001
+        rect = QgsRectangle(mPos.x() - width,
+                            mPos.y() - width,
+                            mPos.x() + width,
+                            mPos.y() + width)
         layer.startEditing()
         rectadd = layer.getFeatures(QgsFeatureRequest().setFilterRect(rect))
         featureid = "";

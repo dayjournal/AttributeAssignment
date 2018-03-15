@@ -1,7 +1,9 @@
 # AttributeAssignment
 ![README01](./img/README01.png)
 
-Easy to assign an attribute on QGIS. (QGISv2)  
+Easy to assign an attribute on QGIS. (QGISv3)  
+
+[QGISv2 Repository](https://github.com/dayjournal/AttributeAssignment/tree/QGIS2)  
 
 <br/>
 
@@ -16,7 +18,7 @@ Easy to assign an attribute on QGIS. (QGISv2)
 ## License
 Python modules are released under the GNU General Public License v2.0
 
-Copyright (c) 2017 Yasunori Kirimoto
+Copyright (c) 2018 Yasunori Kirimoto
 
 <br/>
 
@@ -31,7 +33,9 @@ Copyright (c) 2017 Yasunori Kirimoto
 # 属性付与
 ![README01](./img/README01.png)
 
-QGISで簡単に属性付与 (QGISv2)  
+QGISで簡単に属性付与 (QGISv3)  
+
+[QGISv2 Repository](https://github.com/dayjournal/AttributeAssignment/tree/QGIS2)  
 
 <br/>
 
@@ -46,6 +50,6 @@ QGISで簡単に属性付与 (QGISv2)
 ## ライセンス
 Python modules are released under the GNU General Public License v2.0
 
-Copyright (c) 2017 Yasunori Kirimoto
+Copyright (c) 2018 Yasunori Kirimoto
 
 <br/>

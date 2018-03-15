@@ -1,9 +1,9 @@
 
 [general]
 name=AttributeAssignment
-qgisMinimumVersion=2.14
+qgisMinimumVersion=3.0
 description=AttributeAssignment
-version=1.0
+version=2.0
 author=Yasunori Kirimoto
 email=contact@day-journal.com
 
