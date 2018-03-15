@@ -1,7 +1,7 @@
 # AttributeAssignment
 ![README01](./img/README01.png)
 
-Easy to assign an attribute on QGIS
+Easy to assign an attribute on QGIS. (QGISv2)  
 
 <br/>
 
@@ -31,7 +31,7 @@ Copyright (c) 2017 Yasunori Kirimoto
 # 属性付与
 ![README01](./img/README01.png)
 
-QGISで簡単に属性付与
+QGISで簡単に属性付与 (QGISv2)  
 
 <br/>
 
