@@ -3,6 +3,8 @@
 
 Easy to assign an attribute on QGIS. (QGISv3)  
 
+[QGIS Python Plugins Repository](https://plugins.qgis.org/plugins/AttributeAssignment)  
+
 [QGISv2 Repository](https://github.com/dayjournal/AttributeAssignment/tree/QGIS2)  
 
 <br/>
@@ -34,6 +36,8 @@ Copyright (c) 2018 Yasunori Kirimoto
 ![README01](./img/README01.png)
 
 QGISで簡単に属性付与 (QGISv3)  
+
+[QGIS Python Plugins Repository](https://plugins.qgis.org/plugins/AttributeAssignment)  
 
 [QGISv2 Repository](https://github.com/dayjournal/AttributeAssignment/tree/QGIS2)  
 
