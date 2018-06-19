@@ -101,6 +101,7 @@ class AttributeAssignment:
         del self.toolbar
     def run(self):
         self.dlg.show()
+        self.dlg.mMapLayerComboBox.setLayer(self.iface.layerTreeView().currentLayer()) 
         self.toolClick = QgsMapToolClick(self.iface, self.canvas, self.dlg)
         self.canvas.setMapTool(self.toolClick)
 

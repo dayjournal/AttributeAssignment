@@ -23,4 +23,4 @@ class AttributeAssignmentDialog(QtWidgets.QDialog, Ui_AttributeAssignment):
     def __init__(self, parent=None):
         super(AttributeAssignmentDialog, self).__init__(parent)
         self.setupUi(self)
-        self.mMapLayerComboBox.setCurrentIndex(-1)        
+        #self.mMapLayerComboBox.setCurrentIndex(-1)        
