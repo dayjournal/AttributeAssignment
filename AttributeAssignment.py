@@ -118,15 +118,9 @@ class QgsMapToolClick(QgsMapTool):
         self.dlg = dlg
 
     def canvasPressEvent(self, mouseEvent):
-        layer = self.dlg.mMapLayerComboBox.currentText()
+        layer = self.dlg.mMapLayerComboBox.currentLayer()
         fieldname = self.dlg.mFieldComboBox.currentText()
         textvalue = self.dlg.lineEdit_text.text()
-        layers = QgsProject.instance().mapLayers()
-        for k,v in layers.items():
-           if v.name() == layer:
-               layer = v
-           else:
-               pass
         if not layer or layer.type() != QgsMapLayer.VectorLayer:
             QMessageBox.warning(None, u"Error", u"This is not a vector layer.")
             return
