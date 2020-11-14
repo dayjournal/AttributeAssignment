@@ -140,12 +140,12 @@ class QgsMapToolClick(QgsMapTool):
                             mPos.y() + width)
         layer.startEditing()
         rectadd = layer.getFeatures(QgsFeatureRequest().setFilterRect(rect))
-        featureid = ""
+        featureid = None
         for f in rectadd:
             attrs = f.attributes()
             findex = f.fieldNameIndex(fieldname)
             featureid = f.id()
-        if featureid != "":
+        if featureid is not None:
             layer.changeAttributeValue(featureid, findex, textvalue)
         else:
             QMessageBox.warning(None, u"Error", u"This is not a feature.")
