@@ -56,8 +56,10 @@ class AttributeAssignment:
         self.menu = self.tr(u'&AttributeAssignment')
         self.toolbar = self.iface.addToolBar(u'AttributeAssignment')
         self.toolbar.setObjectName(u'AttributeAssignment')
+
     def tr(self, message):
         return QCoreApplication.translate('AttributeAssignment', message)
+
     def add_action(
         self,
         icon_path,
@@ -85,6 +87,7 @@ class AttributeAssignment:
                 action)
         self.actions.append(action)
         return action
+
     def initGui(self):
         icon_path = ':/plugins/AttributeAssignment/icon.png'
         self.add_action(
@@ -92,6 +95,7 @@ class AttributeAssignment:
             text=self.tr(u'AttributeAssignment'),
             callback=self.run,
             parent=self.iface.mainWindow())
+
     def unload(self):
         for action in self.actions:
             self.iface.removePluginMenu(
@@ -99,6 +103,7 @@ class AttributeAssignment:
                 action)
             self.iface.removeToolBarIcon(action)
         del self.toolbar
+
     def run(self):
         self.dlg.show()
         self.dlg.mMapLayerComboBox.setLayer(self.iface.layerTreeView().currentLayer()) 
@@ -111,6 +116,7 @@ class QgsMapToolClick(QgsMapTool):
         self.iface = iface
         self.canvas = canvas
         self.dlg = dlg
+
     def canvasPressEvent(self, mouseEvent):
         layer = self.dlg.mMapLayerComboBox.currentText()
         fieldname = self.dlg.mFieldComboBox.currentText()
@@ -124,6 +130,7 @@ class QgsMapToolClick(QgsMapTool):
         if not layer or layer.type() != QgsMapLayer.VectorLayer:
             QMessageBox.warning(None, u"Error", u"This is not a vector layer.")
             return
+
         mPosBefore = mouseEvent.mapPoint()
         layerCRS = layer.crs()
         destcrs = self.iface.mapCanvas().mapSettings().destinationCrs()
