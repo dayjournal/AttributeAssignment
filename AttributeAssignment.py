@@ -133,6 +133,7 @@ class QgsMapToolClick(QgsMapTool):
         if not layer or layer.type() != QgsMapLayer.VectorLayer:
             QMessageBox.warning(None, u"Error", u"This is not a vector layer.")
             return
+
         mPosBefore = mouseEvent.mapPoint()
         layerCRS = layer.crs()
         destcrs = self.iface.mapCanvas().mapSettings().destinationCrs()
