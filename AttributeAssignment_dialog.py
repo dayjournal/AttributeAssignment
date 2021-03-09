@@ -19,7 +19,8 @@ from PyQt5 import uic, QtWidgets, QtCore
 from qgis.gui import *
 from .AttributeAssignment_base import Ui_AttributeAssignment
 
+
 class AttributeAssignmentDialog(QtWidgets.QDialog, Ui_AttributeAssignment):
     def __init__(self, parent=None):
         super(AttributeAssignmentDialog, self).__init__(parent)
-        self.setupUi(self)      
+        self.setupUi(self)
