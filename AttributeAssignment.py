@@ -123,7 +123,7 @@ class QgsMapToolClick(QgsMapTool):
     def canvasPressEvent(self, mouseEvent):
         layer = self.dlg.mMapLayerComboBox.currentLayer()
         fieldname = self.dlg.mFieldComboBox.currentText()
-        textvalue = self.dlg.lineEdit_text.text()
+        value = self.dlg.wrapper.value()
         if not layer or layer.type() != QgsMapLayer.VectorLayer:
             QMessageBox.warning(None, u"Error", u"This is not a vector layer.")
             return
@@ -146,7 +146,7 @@ class QgsMapToolClick(QgsMapTool):
             findex = f.fieldNameIndex(fieldname)
             featureid = f.id()
         if featureid is not None:
-            layer.changeAttributeValue(featureid, findex, textvalue)
+            layer.changeAttributeValue(featureid, findex, value)
         else:
             QMessageBox.warning(None, u"Error", u"This is not a feature.")
         layer.triggerRepaint()
