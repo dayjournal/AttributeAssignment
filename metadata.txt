@@ -3,7 +3,7 @@
 name=AttributeAssignment
 qgisMinimumVersion=3.0
 description=AttributeAssignment
-version=2.2
+version=2.3
 author=Yasunori Kirimoto
 email=contact@day-journal.com
 

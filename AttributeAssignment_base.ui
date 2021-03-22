@@ -2,60 +2,135 @@
 <ui version="4.0">
  <class>AttributeAssignment</class>
  <widget class="QDialog" name="AttributeAssignment">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>570</width>
-    <height>602</height>
+    <width>240</width>
+    <height>220</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>AttributeAssignment</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_field">
-     <property name="text">
-      <string>Field</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label_value">
-     <property name="text">
-      <string>Value</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QgsMapLayerComboBox" name="mMapLayerComboBox"/>
-   </item>
+   <property name="fieldGrowthPolicy">
+    <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+   </property>
+   <property name="rowWrapPolicy">
+    <enum>QFormLayout::DontWrapRows</enum>
+   </property>
+   <property name="horizontalSpacing">
+    <number>10</number>
+   </property>
+   <property name="verticalSpacing">
+    <number>10</number>
+   </property>
+   <property name="leftMargin">
+    <number>20</number>
+   </property>
+   <property name="topMargin">
+    <number>20</number>
+   </property>
+   <property name="rightMargin">
+    <number>20</number>
+   </property>
+   <property name="bottomMargin">
+    <number>20</number>
+   </property>
    <item row="0" column="0">
     <widget class="QLabel" name="label_layer">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string>Layer</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
-    <widget class="QgsFieldComboBox" name="mFieldComboBox"/>
+   <item row="1" column="0" colspan="2">
+    <widget class="QgsMapLayerComboBox" name="mMapLayerComboBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+       <horstretch>0</horstretch>
+       <verstretch>25</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="allowEmptyLayer">
+      <bool>false</bool>
+     </property>
+     <property name="showCrs">
+      <bool>false</bool>
+     </property>
+    </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QWidget" name="mValuePlaceholder" native="true"/>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_field">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Field</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QgsFieldComboBox" name="mFieldComboBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+       <horstretch>0</horstretch>
+       <verstretch>25</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_value">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Value</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="2">
+    <widget class="QWidget" name="mValuePlaceholder" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+       <horstretch>0</horstretch>
+       <verstretch>25</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
    </item>
   </layout>
+  <zorder>label_layer</zorder>
+  <zorder>mValuePlaceholder</zorder>
+  <zorder>label_field</zorder>
+  <zorder>mMapLayerComboBox</zorder>
+  <zorder>mFieldComboBox</zorder>
+  <zorder>label_value</zorder>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>QgsMapLayerComboBox</class>
-   <extends>QComboBox</extends>
-   <header>qgis.gui.QgsMapLayerComboBox</header>
-  </customwidget>
-  <customwidget>
    <class>QgsFieldComboBox</class>
    <extends>QComboBox</extends>
-   <header>qgis.gui.QgsFieldComboBox</header>
+   <header>qgsfieldcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QgsMapLayerComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgsmaplayercombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

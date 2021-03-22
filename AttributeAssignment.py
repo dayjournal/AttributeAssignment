@@ -123,7 +123,10 @@ class QgsMapToolClick(QgsMapTool):
     def canvasPressEvent(self, mouseEvent):
         layer = self.dlg.mMapLayerComboBox.currentLayer()
         fieldname = self.dlg.mFieldComboBox.currentText()
-        value = self.dlg.wrapper.value()
+        if self.dlg.wrapper is not None:
+            value = self.dlg.wrapper.value()
+        else:
+            value = None
         if not layer or layer.type() != QgsMapLayer.VectorLayer:
             QMessageBox.warning(None, u"Error", u"This is not a vector layer.")
             return
