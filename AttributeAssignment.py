@@ -121,18 +121,16 @@ class QgsMapToolClick(QgsMapTool):
         self.dlg = dlg
 
     def canvasPressEvent(self, mouseEvent):
-        layer = self.dlg.mMapLayerComboBox.currentText()
+        layer = self.dlg.mMapLayerComboBox.currentLayer()
         fieldname = self.dlg.mFieldComboBox.currentText()
-        textvalue = self.dlg.lineEdit_text.text()
-        layers = QgsProject.instance().mapLayers()
-        for k, v in layers.items():
-            if v.name() == layer:
-                layer = v
-            else:
-                pass
+        if self.dlg.wrapper is not None:
+            value = self.dlg.wrapper.value()
+        else:
+            value = None
         if not layer or layer.type() != QgsMapLayer.VectorLayer:
             QMessageBox.warning(None, u"Error", u"This is not a vector layer.")
             return
+
         mPosBefore = mouseEvent.mapPoint()
         layerCRS = layer.crs()
         destcrs = self.iface.mapCanvas().mapSettings().destinationCrs()
@@ -145,13 +143,13 @@ class QgsMapToolClick(QgsMapTool):
                             mPos.y() + width)
         layer.startEditing()
         rectadd = layer.getFeatures(QgsFeatureRequest().setFilterRect(rect))
-        featureid = ""
+        featureid = None
         for f in rectadd:
             attrs = f.attributes()
             findex = f.fieldNameIndex(fieldname)
             featureid = f.id()
-        if featureid != "":
-            layer.changeAttributeValue(featureid, findex, textvalue)
+        if featureid is not None:
+            layer.changeAttributeValue(featureid, findex, value)
         else:
             QMessageBox.warning(None, u"Error", u"This is not a feature.")
         layer.triggerRepaint()
