@@ -13,73 +13,93 @@
  ***************************************************************************/
 """
 
+from qgsfieldcombobox import QgsFieldComboBox
+from qgsmaplayercombobox import QgsMapLayerComboBox
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
-
-try:
-    _encoding = QtWidgets.QApplication.UnicodeUTF8
-    def _translate(context, text, disambig):
-        return QtWidgets.QApplication.translate(context, text, disambig, _encoding)
-except AttributeError:
-    def _translate(context, text, disambig):
-        return QtWidgets.QApplication.translate(context, text, disambig)
 
 class Ui_AttributeAssignment(object):
     def setupUi(self, AttributeAssignment):
-        AttributeAssignment.setObjectName(_fromUtf8("AttributeAssignment"))
+        AttributeAssignment.setObjectName("AttributeAssignment")
+        AttributeAssignment.setEnabled(True)
         AttributeAssignment.resize(240, 220)
-        AttributeAssignment.move(50, 125)
         self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
+        self.formLayout = QtWidgets.QFormLayout(AttributeAssignment)
+        self.formLayout.setFieldGrowthPolicy(
+            QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
+        self.formLayout.setRowWrapPolicy(QtWidgets.QFormLayout.DontWrapRows)
+        self.formLayout.setContentsMargins(20, 20, 20, 20)
+        self.formLayout.setSpacing(10)
+        self.formLayout.setObjectName("formLayout")
         self.label_layer = QtWidgets.QLabel(AttributeAssignment)
-        self.label_layer.setGeometry(QtCore.QRect(20, 15, 201, 21))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_layer.setFont(font)
-        self.label_layer.setObjectName(_fromUtf8("label_layer"))
+        self.label_layer.setObjectName("label_layer")
+        self.formLayout.setWidget(
+            0, QtWidgets.QFormLayout.LabelRole, self.label_layer)
         self.mMapLayerComboBox = QgsMapLayerComboBox(AttributeAssignment)
-        self.mMapLayerComboBox.setGeometry(QtCore.QRect(20, 35, 200, 25))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.mMapLayerComboBox.setFont(font)
-        self.mMapLayerComboBox.setObjectName(_fromUtf8("mMapLayerComboBox"))
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.MinimumExpanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(25)
+        sizePolicy.setHeightForWidth(
+            self.mMapLayerComboBox.sizePolicy().hasHeightForWidth())
+        self.mMapLayerComboBox.setSizePolicy(sizePolicy)
+        self.mMapLayerComboBox.setAllowEmptyLayer(False)
+        self.mMapLayerComboBox.setShowCrs(False)
+        self.mMapLayerComboBox.setObjectName("mMapLayerComboBox")
+        self.formLayout.setWidget(
+            1, QtWidgets.QFormLayout.SpanningRole, self.mMapLayerComboBox)
         self.label_field = QtWidgets.QLabel(AttributeAssignment)
-        self.label_field.setGeometry(QtCore.QRect(20, 75, 201, 21))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_field.setFont(font)
-        self.label_field.setObjectName(_fromUtf8("label_field"))
+        self.label_field.setObjectName("label_field")
+        self.formLayout.setWidget(
+            3, QtWidgets.QFormLayout.LabelRole, self.label_field)
         self.mFieldComboBox = QgsFieldComboBox(AttributeAssignment)
-        self.mFieldComboBox.setGeometry(QtCore.QRect(20, 95, 200, 25))
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.MinimumExpanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(25)
+        sizePolicy.setHeightForWidth(
+            self.mFieldComboBox.sizePolicy().hasHeightForWidth())
+        self.mFieldComboBox.setSizePolicy(sizePolicy)
+        self.mFieldComboBox.setObjectName("mFieldComboBox")
+        self.formLayout.setWidget(
+            4, QtWidgets.QFormLayout.SpanningRole, self.mFieldComboBox)
+        self.label_value = QtWidgets.QLabel(AttributeAssignment)
         font = QtGui.QFont()
         font.setPointSize(10)
-        self.mFieldComboBox.setFont(font)
-        self.mFieldComboBox.setObjectName(_fromUtf8("mFieldComboBox"))
-        self.label_text = QtWidgets.QLabel(AttributeAssignment)
-        self.label_text.setGeometry(QtCore.QRect(20, 140, 201, 21))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_text.setFont(font)
-        self.label_text.setObjectName(_fromUtf8("label_text"))
-        self.lineEdit_text = QtWidgets.QLineEdit(AttributeAssignment)
-        self.lineEdit_text.setGeometry(QtCore.QRect(20, 160, 200, 25))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.lineEdit_text.setFont(font)
-        self.lineEdit_text.setObjectName(_fromUtf8("lineEdit_text"))
+        self.label_value.setFont(font)
+        self.label_value.setObjectName("label_value")
+        self.formLayout.setWidget(
+            6, QtWidgets.QFormLayout.LabelRole, self.label_value)
+        self.mValuePlaceholder = QtWidgets.QWidget(AttributeAssignment)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.MinimumExpanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(25)
+        sizePolicy.setHeightForWidth(
+            self.mValuePlaceholder.sizePolicy().hasHeightForWidth())
+        self.mValuePlaceholder.setSizePolicy(sizePolicy)
+        self.mValuePlaceholder.setObjectName("mValuePlaceholder")
+        self.formLayout.setWidget(
+            7, QtWidgets.QFormLayout.SpanningRole, self.mValuePlaceholder)
+        self.label_layer.raise_()
+        self.mValuePlaceholder.raise_()
+        self.label_field.raise_()
+        self.mMapLayerComboBox.raise_()
+        self.mFieldComboBox.raise_()
+        self.label_value.raise_()
         self.retranslateUi(AttributeAssignment)
-        # QtCore.QObject.connect(self.mMapLayerComboBox, QtCore.SIGNAL(_fromUtf8("layerChanged(QgsMapLayer*)")), self.mFieldComboBox.setLayer)
-        self.mMapLayerComboBox.layerChanged.connect(self.mFieldComboBox.setLayer)
         QtCore.QMetaObject.connectSlotsByName(AttributeAssignment)
 
     def retranslateUi(self, AttributeAssignment):
-        AttributeAssignment.setWindowTitle(_translate("AttributeAssignment", u"AttributeAssignment", None))
-        self.label_layer.setText(_translate("AttributeAssignment", u"Layer", None))
-        self.label_field.setText(_translate("AttributeAssignment", u"Field", None))
-        self.label_text.setText(_translate("AttributeAssignment", u"Value", None)) 
-
-from qgis.gui import QgsFieldComboBox, QgsMapLayerComboBox
+        _translate = QtCore.QCoreApplication.translate
+        AttributeAssignment.setWindowTitle(_translate(
+            "AttributeAssignment", "AttributeAssignment"))
+        self.label_layer.setText(_translate("AttributeAssignment", "Layer"))
+        self.label_field.setText(_translate("AttributeAssignment", "Field"))
+        self.label_value.setText(_translate("AttributeAssignment", "Value"))

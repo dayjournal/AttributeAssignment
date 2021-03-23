@@ -13,6 +13,7 @@
  ***************************************************************************/
 """
 
+
 def classFactory(iface):
     from .AttributeAssignment import AttributeAssignment
     return AttributeAssignment(iface)
